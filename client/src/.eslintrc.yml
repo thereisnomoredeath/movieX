@@ -1,0 +1,29 @@
+{
+    "extends":[
+    "react-app",
+    "react-app/jest",
+    "airbnb"
+    ],
+
+    "rules": {
+        "array-bracket-spacing": [1, 'always'],
+        "semi": [1, "never"],
+        "no-plusplus": 0,
+        "eol-last": 0,
+        "max-len": [1, {"code": 150}],
+        "arrow-body-style": [1, "as-needed"],
+        "no-param-reassign": 0,
+        "jsx-quotes": [1, "prefer-single"],
+        "import/order": ["error", {
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
+        }],
+        "no-console": 1,
+        "react/prop-types": 0,
+        "no-shadow": 0,
+        "react/jsx-props-no-spreading": [1, {
+        "html": "enforce",
+        "custom": "ignore",
+        "explicitSpread": "ignore",
+        "exceptions": ["img", "span" ]}]
+    }
+}
