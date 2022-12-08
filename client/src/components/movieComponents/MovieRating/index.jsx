@@ -52,7 +52,7 @@ export default function MovieRating({ rating }) {
       sx={{ mt: 2 }}
       name='highlight-selected-only'
       defaultValue={2}
-      value={rating}
+      value={Math.round(rating) * 0.5}
       readOnly
       IconContainerComponent={IconContainer}
       getLabelText={(value) => customIcons[value].label}

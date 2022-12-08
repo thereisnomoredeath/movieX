@@ -19,7 +19,7 @@ export default function MovieCard({ movie, onCardSelect }) {
       />
       <CardContent>
         <CardHeader
-          sx={{ position: 'absolute', left: 0, top: 0 }}
+          sx={{ position: 'absolute', right: 0, top: 0 }}
           action={<CardMenu onCardACtion={onCardSelect}>Add to favorites</CardMenu>}
         />
         <Typography variant='h5'>
@@ -37,7 +37,7 @@ export default function MovieCard({ movie, onCardSelect }) {
           {' '}
           minutes
         </Typography>
-        <MovieRating rating={movie.popularity} />
+        <MovieRating rating={movie.rating} />
       </CardContent>
     </Card>
   )
