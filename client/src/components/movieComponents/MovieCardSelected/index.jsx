@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { CardHeader } from '@mui/material'
 import MovieRating from '../MovieRating'
-import CardMenu from '../CardMenu'
 
 export default function MovieCardSelected({ movie, onCardDelete }) { //eslint-disable-line
   return (
@@ -22,7 +21,6 @@ export default function MovieCardSelected({ movie, onCardDelete }) { //eslint-di
         <CardContent sx={{ flex: '1 0 auto' }}>
           <CardHeader
             sx={{ position: 'absolute', right: '15px', top: '15px' }}
-            action={<CardMenu onCardACtion={onCardDelete}>Delete card</CardMenu>}
           />
           <Typography component='div' variant='h5'>
             {movie.title}

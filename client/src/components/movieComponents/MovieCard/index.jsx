@@ -5,10 +5,20 @@ import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
-import CardMenu from '../CardMenu/index'
+import Backdrop from '@mui/material/Backdrop'
+// import CircularProgress from '@mui/material/CircularProgress'
+import Button from '@mui/material/Button'
 import MovieRating from '../MovieRating'
+import CardMenu from '../CardMenu/index'
 
 export default function MovieCard({ movie, onCardSelect }) {
+  const [ open, setOpen ] = React.useState(false)
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const handleToggle = () => {
+    setOpen(!open)
+  }
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
       <CardMedia
@@ -30,14 +40,19 @@ export default function MovieCard({ movie, onCardSelect }) {
           {' '}
           {movie.releaseDate}
         </Typography>
-        <Typography variant='subtitle2'>
-          <span style={{ color: '#00b7ff' }}>Runtime: </span>
-          {' '}
-          {movie.runtime}
-          {' '}
-          minutes
-        </Typography>
         <MovieRating rating={movie.rating} />
+        <div>
+          <Button sx={{ color: '#00b7ff' }} onClick={handleToggle}>Show overview</Button>
+          <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            <div style={{ backgroundColor: '#232323', width: '300px', height: '300px' }}>
+              {movie.overview}
+            </div>
+          </Backdrop>
+        </div>
       </CardContent>
     </Card>
   )

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
 const MOVIES = gql`
-    query {
-        movies {
+    query Movies($page: Int) {
+        movies(page: $page) {
             page
             totalResults
             totalPages
@@ -12,6 +12,7 @@ const MOVIES = gql`
                 image: posterPath
                 releaseDate
                 rating: voteAverage
+                overview
             }
         }
     }

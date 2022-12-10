@@ -42,21 +42,29 @@ function IconContainer(props) {
   return <span {...other}>{customIcons[value].icon}</span>
 }
 
-IconContainer.propTypes = {
-  value: PropTypes.number.isRequired,
-}
-
 export default function MovieRating({ rating }) {
   return (
     <StyledRating
       sx={{ mt: 2 }}
       name='highlight-selected-only'
       defaultValue={2}
-      value={Math.round(rating) * 0.5}
+      value={Math.round(rating) * 0.5 || 1}
       readOnly
       IconContainerComponent={IconContainer}
       getLabelText={(value) => customIcons[value].label}
       highlightSelectedOnly
     />
   )
+}
+
+IconContainer.propTypes = {
+  value: PropTypes.number.isRequired,
+}
+
+MovieRating.propTypes = {
+  rating: PropTypes.number,
+}
+
+MovieRating.defaultProps = {
+  rating: 1,
 }

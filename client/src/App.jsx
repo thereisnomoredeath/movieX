@@ -22,6 +22,7 @@ import { Home, Settings, Recommend } from './pages'
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
   cache: new InMemoryCache(),
+  connectToDevTools: true,
 })
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
           >
             <Container maxWidth='xl'>
               <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='' element={<Home />} />
                 <Route path='settings' element={<Settings />} />
                 <Route path='recommend' element={<Recommend />} />
               </Routes>
