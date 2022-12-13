@@ -10,6 +10,7 @@ import { InfinitySpin } from 'react-loader-spinner'
 import MovieCard from '../../components/movieComponents/MovieCard/index'
 import MovieCardSelected from '../../components/movieComponents/MovieCardSelected'
 import useMovies from '../../hooks/useMovies'
+import SelectedIcon from '../../images/SelectedIcon.svg'
 import MOVIES from './queries'
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
@@ -74,7 +75,7 @@ export default function Home() {
               <Grid container spacing={2} pt={3} pb={2}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Stack sx={{ '& .MuiPagination-ul': { justifyContent: 'center' } }} spacing={2}>
-                    <Pagination onChange={changePage} page={page} count={data?.movies?.totalPages} variant='outlined' shape='rounded' />
+                    <Pagination onChange={changePage} page={page} count={500} variant='outlined' shape='rounded' />
                   </Stack>
                 </Grid>
               </Grid>
@@ -83,15 +84,27 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} md={4} pb={2}>
           <SelectedMovies>
-            <Box sx={{ flexGrow: 1, padding: 1 }}>
-              <Grid container spacing={2}>
-                {selectedMovies.map((movie) => (
-                  <Grid key={movie.id} item xs={12} sm={12} md={12} lg={12}>
-                    <MovieCardSelected movie={movie} onCardDelete={deleteCard} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
+            {!selectedMovies.length ? (
+              <Box sx={{
+                width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: '.45',
+              }}
+              >
+                <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+                  <img src={SelectedIcon} alt='cover' />
+                  <h1>No selected movies</h1>
+                </Box>
+              </Box>
+            ) : (
+              <Box sx={{ flexGrow: 1, padding: 1 }}>
+                <Grid container spacing={2}>
+                  {selectedMovies.map((movie) => (
+                    <Grid key={movie.id} item xs={12} sm={12} md={12} lg={12}>
+                      <MovieCardSelected movie={movie} onCardDelete={deleteCard} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            )}
           </SelectedMovies>
         </Grid>
       </Grid>

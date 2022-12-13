@@ -7,8 +7,29 @@ import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import Backdrop from '@mui/material/Backdrop'
 import Button from '@mui/material/Button'
+import { styled } from '@mui/material/styles'
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import Box from '@mui/material/Box'
 import MovieRating from '../MovieRating'
 import CardMenu from '../CardMenu/index'
+
+const StyledImg = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+  opacity: '0',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+  '&:hover': {
+    background: 'rgba(255, 255, 255, .8)',
+    opacity: '.7',
+    color: theme.palette.bgcolor,
+  },
+}))
 
 export default function MovieCard({
   movie, onCardSelect,
@@ -23,12 +44,17 @@ export default function MovieCard({
 
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-      <CardMedia
-        component='img'
-        height='250'
-        image={movie.image}
-        alt='cover'
-      />
+      <Box sx={{ position: 'relative' }}>
+        <CardMedia
+          component='img'
+          height='250'
+          image={movie.image}
+          alt='cover'
+        />
+        <StyledImg>
+          <AddBoxOutlinedIcon sx={{ fontSize: 80, color: '' }} onClick={() => onCardSelect(movie)} />
+        </StyledImg>
+      </Box>
       <CardContent>
         <CardHeader
           sx={{ position: 'absolute', right: 0, top: 0 }}
