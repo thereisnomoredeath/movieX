@@ -6,12 +6,13 @@ import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
 import Backdrop from '@mui/material/Backdrop'
-// import CircularProgress from '@mui/material/CircularProgress'
 import Button from '@mui/material/Button'
 import MovieRating from '../MovieRating'
 import CardMenu from '../CardMenu/index'
 
-export default function MovieCard({ movie, onCardSelect }) {
+export default function MovieCard({
+  movie, onCardSelect,
+}) {
   const [ open, setOpen ] = React.useState(false)
   const handleClose = () => {
     setOpen(false)
@@ -19,6 +20,7 @@ export default function MovieCard({ movie, onCardSelect }) {
   const handleToggle = () => {
     setOpen(!open)
   }
+
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
       <CardMedia
@@ -30,7 +32,13 @@ export default function MovieCard({ movie, onCardSelect }) {
       <CardContent>
         <CardHeader
           sx={{ position: 'absolute', right: 0, top: 0 }}
-          action={<CardMenu onCardACtion={onCardSelect}>Add to favorites</CardMenu>}
+          action={(
+            <CardMenu
+              onCardACtion={() => onCardSelect(movie)}
+            >
+              Add to favorites
+            </CardMenu>
+)}
         />
         <Typography variant='h5'>
           {movie.title}

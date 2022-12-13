@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack'
 import { InfinitySpin } from 'react-loader-spinner'
 import MovieCard from '../../components/movieComponents/MovieCard/index'
 import MovieCardSelected from '../../components/movieComponents/MovieCardSelected'
+import useMovies from '../../hooks/useMovies'
 import MOVIES from './queries'
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
@@ -36,33 +37,12 @@ const ListOfMovies = styled(Paper)(({ theme }) => ({
 export default function Home() {
   const [ page, setPage ] = React.useState(1)
   const { loading, error, data } = useQuery(MOVIES, { variables: { page } })
+  const { selectCard, deleteCard, selectedMovies } = useMovies()
 
   if (error) return 'Something went wrong...'
 
   const changePage = (e, page) => {
     setPage(page)
-  }
-
-  const selected = {
-    image: 'https://image.tmdb.org/t/p/w300/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg',
-    adult: false,
-    overview: `From DC Comics comes the Suicide Squad,
-    an antihero team of incarcerated supervillains who act as deniable assets for the United States government,
-    undertaking high-risk black ops missions in exchange for commuted prison sentences.`,
-    release_date: '2016-08-03',
-    genre_ids: [
-      14,
-      28,
-      80,
-    ],
-    id: 297761,
-    original_title: 'Suicide Squad',
-    original_language: 'en',
-    title: 'Suicide Squad',
-    backdrop_path: '/ndlQ2Cuc3cjTL7lTynw6I4boP4S.jpg',
-    vote_count: 1466,
-    video: false,
-    popularity: 5.91,
   }
 
   return (
@@ -87,7 +67,7 @@ export default function Home() {
               <Grid container spacing={2}>
                 {data && data.movies.results.map((movie) => (
                   <Grid key={movie.id} item xs={6} sm={4} md={4} lg={3}>
-                    <MovieCard movie={movie} onCardSelect={() => {}} />
+                    <MovieCard movie={movie} onCardSelect={selectCard} />
                   </Grid>
                 ))}
               </Grid>
@@ -105,9 +85,11 @@ export default function Home() {
           <SelectedMovies>
             <Box sx={{ flexGrow: 1, padding: 1 }}>
               <Grid container spacing={2}>
-                <Grid key={selected.id} item xs={12} sm={12} md={12} lg={12}>
-                  <MovieCardSelected movie={selected} onCardDelete={() => {}} />
-                </Grid>
+                {selectedMovies.map((movie) => (
+                  <Grid key={movie.id} item xs={12} sm={12} md={12} lg={12}>
+                    <MovieCardSelected movie={movie} onCardDelete={deleteCard} />
+                  </Grid>
+                ))}
               </Grid>
             </Box>
           </SelectedMovies>

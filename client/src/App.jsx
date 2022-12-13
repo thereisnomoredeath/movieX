@@ -17,7 +17,7 @@ import {
 } from '@apollo/client'
 
 import { Header, MovieTheme } from './components/index'
-import { Home, Settings, Recommend } from './pages'
+import { Home, Settings } from './pages'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
@@ -40,7 +40,6 @@ function App() {
               <Routes>
                 <Route path='' element={<Home />} />
                 <Route path='settings' element={<Settings />} />
-                <Route path='recommend' element={<Recommend />} />
               </Routes>
             </Container>
           </Box>

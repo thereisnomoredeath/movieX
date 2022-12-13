@@ -5,10 +5,12 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { CardHeader } from '@mui/material'
+import { Button, CardHeader } from '@mui/material'
 import MovieRating from '../MovieRating'
 
-export default function MovieCardSelected({ movie, onCardDelete }) { //eslint-disable-line
+export default function MovieCardSelected({
+  movie, onCardDelete,
+}) {
   return (
     <Card sx={{ display: 'flex' }}>
       <CardMedia
@@ -38,6 +40,9 @@ export default function MovieCardSelected({ movie, onCardDelete }) { //eslint-di
             minutes
           </Typography>
           <MovieRating rating={movie.popularity} />
+          <Button onClick={() => onCardDelete(movie)} variant='outlined'>
+            X
+          </Button>
         </CardContent>
       </Box>
     </Card>
