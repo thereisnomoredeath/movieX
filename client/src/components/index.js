@@ -4,6 +4,8 @@ import MovieCard from './movieComponents/MovieCard'
 import MovieCardSelected from './movieComponents/MovieCardSelected'
 import MovieTheme from './Theme'
 import MovieRating from './movieComponents/MovieRating'
+import SelectedMoviesForm from './movieComponents/SelectedMoviesForm'
+import SelectedMoviesSection from './movieComponents/SelectedMoviesSection'
 
 export {
   Header,
@@ -12,4 +14,6 @@ export {
   MovieCardSelected,
   MovieTheme,
   MovieRating,
+  SelectedMoviesForm,
+  SelectedMoviesSection,
 }

@@ -7,21 +7,9 @@ import { useQuery } from '@apollo/client'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { InfinitySpin } from 'react-loader-spinner'
-import MovieCard from '../../components/movieComponents/MovieCard/index'
-import MovieCardSelected from '../../components/movieComponents/MovieCardSelected'
+import { MovieCard, SelectedMoviesSection } from '../../components'
 import useMovies from '../../hooks/useMovies'
-import SelectedIcon from '../../images/SelectedIcon.svg'
 import MOVIES from './queries'
-
-const SelectedMovies = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.sections,
-  ...theme.typography.body2,
-  color: theme.palette.textColor,
-  height: 'calc(100vh - 120px)',
-  position: 'sticky',
-  top: theme.spacing(2),
-  overflowY: 'scroll',
-}))
 
 const FiltersSection = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.sections,
@@ -83,29 +71,7 @@ export default function Home() {
           </ListOfMovies>
         </Grid>
         <Grid item xs={12} md={4} pb={2}>
-          <SelectedMovies>
-            {!selectedMovies.length ? (
-              <Box sx={{
-                width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: '.45',
-              }}
-              >
-                <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                  <img src={SelectedIcon} alt='cover' />
-                  <h1>No selected movies</h1>
-                </Box>
-              </Box>
-            ) : (
-              <Box sx={{ flexGrow: 1, padding: 1 }}>
-                <Grid container spacing={2}>
-                  {selectedMovies.map((movie) => (
-                    <Grid key={movie.id} item xs={12} sm={12} md={12} lg={12}>
-                      <MovieCardSelected movie={movie} onCardDelete={deleteCard} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
-            )}
-          </SelectedMovies>
+          <SelectedMoviesSection selectedMovies={selectedMovies} deleteMovie={deleteCard} />
         </Grid>
       </Grid>
     </Box>

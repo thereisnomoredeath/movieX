@@ -12,7 +12,7 @@ export default function MovieCardSelected({
   movie, onCardDelete,
 }) {
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card sx={{ display: 'flex', m: '10px' }}>
       <CardMedia
         component='img'
         sx={{ width: 120 }}
