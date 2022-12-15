@@ -5,8 +5,6 @@ import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import Typography from '@mui/material/Typography'
-import Backdrop from '@mui/material/Backdrop'
-import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import Box from '@mui/material/Box'
@@ -34,14 +32,6 @@ const StyledImg = styled(Box)(({ theme }) => ({
 export default function MovieCard({
   movie, onCardSelect,
 }) {
-  const [ open, setOpen ] = React.useState(false)
-  const handleClose = () => {
-    setOpen(false)
-  }
-  const handleToggle = () => {
-    setOpen(!open)
-  }
-
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
       <Box sx={{ position: 'relative' }}>
@@ -75,18 +65,6 @@ export default function MovieCard({
           {movie.releaseDate}
         </Typography>
         <MovieRating rating={movie.rating} />
-        <div>
-          <Button sx={{ color: '#00b7ff' }} onClick={handleToggle}>Show overview</Button>
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={open}
-            onClick={handleClose}
-          >
-            <div style={{ backgroundColor: '#232323', width: '300px', height: '300px' }}>
-              {movie.overview}
-            </div>
-          </Backdrop>
-        </div>
       </CardContent>
     </Card>
   )

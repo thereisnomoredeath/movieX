@@ -35,6 +35,10 @@ const NoMovies = styled(Box)(() => ({
 }))
 
 function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
+  const onSubmit = ({ listName }) => {
+    const ids = selectedMovies.map(({ id }) => id)
+    const link = `${window.location.host}/recommend?title=${listName}&ids=${ids.join()}` //eslint-disable-line
+  }
   if (!selectedMovies.length) {
     return (
       <SelectedMovies>
@@ -69,7 +73,7 @@ function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
         ))}
       </MoviesList>
       <Box pt={2}>
-        <SelectedMoviesForm />
+        <SelectedMoviesForm onSubmit={onSubmit} />
       </Box>
     </SelectedMovies>
   )
