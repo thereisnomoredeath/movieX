@@ -8,7 +8,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { InfinitySpin } from 'react-loader-spinner'
 import { MovieCard, SelectedMoviesSection } from '../../components'
-import useMovies from '../../hooks/useMovies'
+import useMovies from '../../hooks/useMovies/useMovies'
 import MOVIES from './queries'
 
 const FiltersSection = styled(Paper)(({ theme }) => ({
