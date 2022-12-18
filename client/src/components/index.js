@@ -6,6 +6,7 @@ import MovieTheme from './Theme'
 import MovieRating from './movieComponents/MovieRating'
 import SelectedMoviesForm from './movieComponents/SelectedMoviesForm'
 import SelectedMoviesSection from './movieComponents/SelectedMoviesSection'
+import ConfirmModal from './ConfirmModal'
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   MovieRating,
   SelectedMoviesForm,
   SelectedMoviesSection,
+  ConfirmModal,
 }

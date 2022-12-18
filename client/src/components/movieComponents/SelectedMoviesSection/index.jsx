@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import SelectedIcon from '../../../images/SelectedIcon.svg'
 import SelectedMoviesForm from '../SelectedMoviesForm'
 import MovieCardSelected from '../MovieCardSelected'
+import ConfirmModal from '../../ConfirmModal'
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.sections,
@@ -35,10 +36,19 @@ const NoMovies = styled(Box)(() => ({
 }))
 
 function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
+  const [ link, setLink ] = React.useState('')
+  const [ listName, setListName ] = React.useState('')
   const onSubmit = ({ listName }) => {
     const ids = selectedMovies.map(({ id }) => id)
-    const link = `${window.location.host}/recommend?title=${listName}&ids=${ids.join()}` //eslint-disable-line
+    const link = `${window.location.host}/recommend?title=${listName.split(' ').join('_')}&ids=${ids.join()}`
+    setLink(link)
+    setListName(listName)
   }
+
+  const onCloseConfirmModal = () => {
+    setLink('')
+  }
+
   if (!selectedMovies.length) {
     return (
       <SelectedMovies>
@@ -75,6 +85,7 @@ function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
       <Box pt={2}>
         <SelectedMoviesForm onSubmit={onSubmit} />
       </Box>
+      <ConfirmModal open={!!link} url={link} title={listName} onClose={onCloseConfirmModal} />
     </SelectedMovies>
   )
 }
