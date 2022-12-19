@@ -8,7 +8,7 @@ import InputBase from '@mui/material/InputBase'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import ContentCutIcon from '@mui/icons-material/ContentCut'
-import PreviewIcon from '@mui/icons-material/Preview'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import { SocialIcon } from 'react-social-icons'
@@ -50,7 +50,7 @@ export default function ConfirmModal({
       onClose={reset}
     >
       <Box sx={style}>
-        <Typography sx={{ mb: '5px', color: '#CCFF' }} variant='h5' component='h2'>
+        <Typography sx={{ mb: '5px', color: '#FFF' }} variant='h5' component='h2'>
           {title}
           :
         </Typography>
@@ -63,13 +63,10 @@ export default function ConfirmModal({
         >
           <InputBase
             sx={{
-              ml: 1, flex: 1, fontSize: '16px', height: '20px',
+              ml: 1, flex: 1, fontSize: '15px', height: '20px', p: '2px 0',
             }}
             defaultValue={url}
             autoFocus
-            readOnly
-            multiline
-            rows={2}
           />
           <CopyToClipboard text={url} onCopy={(text, result) => setButtonColor(result)}>
             <IconButton type='button' sx={{ p: '10px', ml: '10px' }} aria-label='preview'>
@@ -80,7 +77,7 @@ export default function ConfirmModal({
           </CopyToClipboard>
           <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
           <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
-            <PreviewIcon sx={{ fontSize: '1.4rem' }} htmlColor='#EE82EE' />
+            <VisibilityIcon sx={{ fontSize: '1.4rem' }} htmlColor='#FFF' />
           </IconButton>
         </Paper>
         <Box sx={{
@@ -91,7 +88,7 @@ export default function ConfirmModal({
             Share width friends:
           </Typography>
           <SocialIcon
-            style={{ height: 25, width: 25, margin: '15px 0' }}
+            style={{ height: 25, width: 25, margin: '10px 0' }}
             url={`https://telegram.me/share/url?url=http://${url}`}
             network='telegram'
           />

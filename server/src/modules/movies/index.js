@@ -14,7 +14,12 @@ const getImages = async () => {
     return new Images(result.data)
 }
 
+const getMoviesById = async (id) => {
+    return await axios.get(`${BASE_URL}movie/${id}?api_key=${API_KEY}`)
+}
+
 module.exports = {
     getPopular,
-    getImages
+    getImages,
+    getMoviesById
 }

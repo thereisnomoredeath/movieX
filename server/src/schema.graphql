@@ -1,6 +1,8 @@
 type Query {
   movies(page: Int): Movies
   images: Images
+  moviesById(id: [Int]): [Movie]
+  movieDetails(id: Int): MovieDetails
 }
 
 type Movies {
@@ -30,4 +32,36 @@ type Movie {
 type Images {
     baseUrl: String
     posterSizes: [String]
+}
+
+type MovieDetails {
+    adult: Boolean
+    budget: Int
+    genres: [Allgenres]
+    homepage: String
+    id: Int
+    originalLanguage: String
+    originalTitle: String
+    overview: String
+    popularity: Float
+    posterPath: String
+    productionCountries: [AllProductionCountries]
+    releaseDate: String
+    revenue: Int
+    runtime: Int
+    status: String
+    tagline: String
+    title: String
+    voteAverage: Float
+    voteCount: Int
+}
+
+type Allgenres {
+    id: Int
+    name: String
+}
+
+type AllProductionCountries {
+    iso_3166_1: String
+    name: String
 }
