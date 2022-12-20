@@ -12,6 +12,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import { SocialIcon } from 'react-social-icons'
+import { Link } from 'react-router-dom'
 
 const style = {
   position: 'absolute',
@@ -76,9 +77,11 @@ export default function ConfirmModal({
             </IconButton>
           </CopyToClipboard>
           <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
-          <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
-            <VisibilityIcon sx={{ fontSize: '1.4rem' }} htmlColor='#FFF' />
-          </IconButton>
+          <Link to={url.slice(15)}>
+            <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
+              <VisibilityIcon sx={{ fontSize: '1.4rem' }} htmlColor='#FFF' />
+            </IconButton>
+          </Link>
         </Paper>
         <Box sx={{
           width: '100%', display: 'flex-inline', alignItems: 'center', justifyContent: 'center',

@@ -7,6 +7,7 @@ import MovieRating from './movieComponents/MovieRating'
 import SelectedMoviesForm from './movieComponents/SelectedMoviesForm'
 import SelectedMoviesSection from './movieComponents/SelectedMoviesSection'
 import ConfirmModal from './ConfirmModal'
+import Loading from './movieComponents/Loading'
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   SelectedMoviesForm,
   SelectedMoviesSection,
   ConfirmModal,
+  Loading,
 }

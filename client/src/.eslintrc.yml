@@ -24,6 +24,9 @@
         "html": "enforce",
         "custom": "ignore",
         "explicitSpread": "ignore",
-        "exceptions": ["img", "span" ]}]
+        "exceptions": ["img", "span" ]}],
+        "react/require-default-props": [1, {"functions": "ignore"}],
+        "no-unused-expressions": ["error", { "allowTernary": true }],
+        "no-prototype-builtins": 0
     }
 }

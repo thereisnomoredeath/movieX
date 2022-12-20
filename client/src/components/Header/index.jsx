@@ -3,8 +3,11 @@ import { Divide as Hamburger } from 'hamburger-react'
 import { CSSTransition } from 'react-transition-group'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import tv from '../../images/TV.svg'
 import Settings from '../../images/Settings.svg'
+import '../../utils/i18n'
+import { LanguageContext } from '../../context/languageContext'
 
 const Nav = styled.nav`
 height: 48px;
@@ -67,10 +70,12 @@ const Links = styled.li`
   color: whitesmoke;
   font-weight: 600;
   font-size: 14px;
-
-  &:first-child {
   cursor: pointer;
-}
+
+  &:hover {
+    color: greenyellow;
+    text-decoration: underline;
+  }
 
   &:first-child a {
   color: whitesmoke;
@@ -88,6 +93,13 @@ const Links = styled.li`
 `
 
 export default function Header() {
+  const { i18n } = useTranslation()
+  const { dispatch } = React.useContext(LanguageContext)
+  const changeLanguage = (e) => {
+    const temp = e.target.textContent.toLowerCase()
+    dispatch({ type: temp === 'ua' ? 'ukrainian' : 'english' })
+    temp === 'ua' ? i18n.changeLanguage('uk') : i18n.changeLanguage('en')
+  }
   const [ isOpen, setOpen ] = React.useState(false)
   const ref = React.useRef(null)
 
@@ -107,8 +119,8 @@ export default function Header() {
             <Menu ref={ref}>
               <Link to='settings'><Img alt='settings' src={Settings} /></Link>
               <Links />
-              <Links>EN</Links>
-              <Links>UA</Links>
+              <Links onClick={changeLanguage}>EN</Links>
+              <Links onClick={changeLanguage}>UA</Links>
             </Menu>
           </CSSTransition>
           <Hamburger

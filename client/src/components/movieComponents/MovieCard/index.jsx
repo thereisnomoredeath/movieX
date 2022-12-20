@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import Box from '@mui/material/Box'
+import { useTranslation } from 'react-i18next'
 import MovieRating from '../MovieRating'
 import CardMenu from '../CardMenu/index'
 
@@ -30,10 +31,12 @@ const StyledImg = styled(Box)(({ theme }) => ({
 }))
 
 export default function MovieCard({
-  movie, onCardSelect,
+  movie, onCardSelect, isFullVersion,
 }) {
+  const { t } = useTranslation()
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
+
       <Box sx={{ position: 'relative' }}>
         <CardMedia
           component='img'
@@ -41,21 +44,25 @@ export default function MovieCard({
           image={movie.image}
           alt='cover'
         />
+        {isFullVersion && (
         <StyledImg>
           <AddBoxOutlinedIcon sx={{ fontSize: 80, color: '' }} onClick={() => onCardSelect(movie)} />
         </StyledImg>
+        )}
       </Box>
       <CardContent>
+        {isFullVersion && (
         <CardHeader
           sx={{ position: 'absolute', right: 0, top: 0 }}
           action={(
             <CardMenu
               onCardACtion={() => onCardSelect(movie)}
             >
-              Add to favorites
+              {t('button')}
             </CardMenu>
 )}
         />
+        )}
         <Typography variant='h5'>
           {movie.title}
         </Typography>
@@ -82,5 +89,6 @@ MovieCard.propTypes = {
     runtime: PropTypes.number,
     popularity: PropTypes.number,
   }).isRequired,
-  onCardSelect: PropTypes.func.isRequired,
+  onCardSelect: PropTypes.func,
+  isFullVersion: PropTypes.bool,
 }

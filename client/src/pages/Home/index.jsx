@@ -6,9 +6,10 @@ import { styled } from '@mui/material/styles'
 import { useQuery } from '@apollo/client'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
-import { InfinitySpin } from 'react-loader-spinner'
+
 import { MovieCard, SelectedMoviesSection } from '../../components'
 import useMovies from '../../hooks/useMovies/useMovies'
+import Loading from '../../components/movieComponents/Loading'
 import MOVIES from './queries'
 
 const FiltersSection = styled(Paper)(({ theme }) => ({
@@ -45,18 +46,11 @@ export default function Home() {
         <Grid item xs={12} md={8} pb={2}>
           <ListOfMovies>
             <Box sx={{ flexGrow: 1, padding: 1 }}>
-              {loading && (
-                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                  <InfinitySpin
-                    width='200'
-                    color='#00b7ff'
-                  />
-                </Box>
-              ) }
+              <Loading loading={loading} />
               <Grid container spacing={2}>
                 {data && data.movies.results.map((movie) => (
                   <Grid key={movie.id} item xs={6} sm={4} md={4} lg={3}>
-                    <MovieCard movie={movie} onCardSelect={selectCard} />
+                    <MovieCard movie={movie} onCardSelect={selectCard} isFullVersion />
                   </Grid>
                 ))}
               </Grid>

@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import { useTranslation } from 'react-i18next'
 import SelectedIcon from '../../../images/SelectedIcon.svg'
 import SelectedMoviesForm from '../SelectedMoviesForm'
 import MovieCardSelected from '../MovieCardSelected'
 import ConfirmModal from '../../ConfirmModal'
+import '../../../utils/i18n'
+import Loading from '../Loading'
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.sections,
@@ -36,6 +39,7 @@ const NoMovies = styled(Box)(() => ({
 }))
 
 function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
+  const { t } = useTranslation()
   const [ link, setLink ] = React.useState('')
   const [ listName, setListName ] = React.useState('')
   const onSubmit = ({ listName }) => {
@@ -63,9 +67,11 @@ function SelectedMoviesSection({ selectedMovies, deleteMovie }) {
             alt='cover'
             src={SelectedIcon}
           />
-          <Typography variant='h4' mt={2}>
-            No selected movies
-          </Typography>
+          <Suspense fallback={Loading}>
+            <Typography variant='h4' mt={2}>
+              {t('selectedMoviesSectionTitle')}
+            </Typography>
+          </Suspense>
         </NoMovies>
       </SelectedMovies>
     )

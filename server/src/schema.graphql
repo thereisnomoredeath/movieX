@@ -1,6 +1,5 @@
 type Query {
   movies(page: Int): Movies
-  images: Images
   moviesById(id: [Int]): [Movie]
   movieDetails(id: Int): MovieDetails
 }
@@ -27,11 +26,6 @@ type Movie {
     video: Boolean
     voteAverage: Float
     genres: [Int]
-}
-
-type Images {
-    baseUrl: String
-    posterSizes: [String]
 }
 
 type MovieDetails {
