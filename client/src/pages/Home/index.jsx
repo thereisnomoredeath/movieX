@@ -26,10 +26,8 @@ const ListOfMovies = styled(Paper)(({ theme }) => ({
 
 export default function Home() {
   const [ page, setPage ] = React.useState(1)
-  const { loading, error, data } = useQuery(MOVIES, { variables: { page } })
+  const { loading, data } = useQuery(MOVIES, { variables: { page }, onError: (error) => console.log(error)}) //eslint-disable-line
   const { selectCard, deleteCard, selectedMovies } = useMovies()
-
-  if (error) return 'Something went wrong...'
 
   const changePage = (e, page) => {
     setPage(page)

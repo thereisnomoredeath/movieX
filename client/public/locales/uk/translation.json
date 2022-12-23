@@ -1,4 +1,16 @@
 {
     "selectedMoviesSectionTitle": "Немає вибраних фільмів",
-    "button": "Додати фільм"
+    "button": "Додати фільм",
+    "placeholder": "Введіть назву списку",
+    "share": "Поділитися з друзями",
+    "releaseDate": "Рік: ",
+    "genres": "Жанр: ",
+    "country": "Країна: ",
+    "runningTime": {
+        "runtime": "Тривалість: ",
+        "time": "хвилин"
+    },
+    "deleteButton": "Видалити",
+    "voteAverage": "Середня оцінка: ",
+    "voteCount": "Кількість голосів: "
 }

@@ -5,8 +5,10 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import CheckIcon from '@mui/icons-material/Check'
 import { Form, Field } from 'react-final-form'
+import { useTranslation } from 'react-i18next'
 
 function SelectedMoviesForm({ onSubmit }) {
+  const { t } = useTranslation()
   return (
     <Form
       onSubmit={onSubmit}
@@ -29,7 +31,7 @@ function SelectedMoviesForm({ onSubmit }) {
               render={({ input }) => (
                 <InputBase
                   sx={{ ml: 1, flex: 1 }}
-                  placeholder='Put the list name'
+                  placeholder={t('placeholder')}
                   inputProps={{ 'aria-label': 'put list name' }}
                   {...input}
                 />

@@ -1,4 +1,16 @@
 {
     "selectedMoviesSectionTitle": "No selected movies",
-    "button": "Add movie"
+    "button": "Add movie",
+    "placeholder": "Put the list name",
+    "share": "Share width friends:",
+    "releaseDate": "Release date: ",
+    "genres": "Genre: ",
+    "country": "Country: ",
+    "runningTime": {
+        "runtime": "Runtime: ",
+        "time": "minutes"
+    },
+    "deleteButton": "Delete",
+    "voteAverage": "Vote average: ",
+    "voteCount": "Vote count: "
 }

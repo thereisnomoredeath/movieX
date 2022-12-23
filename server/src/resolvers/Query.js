@@ -17,9 +17,15 @@ async function movies(parent, args, context) {
     return new MovieDetails(movie.data)
   }
 
+  async function movieDetailsArray(parent, args, context) {
+    const results = await Promise.all(args.id.map((id) => getMoviesById(id, context).then(res => res.data))).catch(reason => console.log(reason))
+    return results.map(movie => new MovieDetails(movie))
+  }
+
   module.exports = {
     movies,
     moviesById,
-    movieDetails
+    movieDetails,
+    movieDetailsArray
   }
   

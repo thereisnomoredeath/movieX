@@ -9,8 +9,11 @@ import { styled } from '@mui/material/styles'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import Box from '@mui/material/Box'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@apollo/client'
 import MovieRating from '../MovieRating'
 import CardMenu from '../CardMenu/index'
+import Loading from '../Loading'
+import MOVIE from './queries'
 
 const StyledImg = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -34,9 +37,9 @@ export default function MovieCard({
   movie, onCardSelect, isFullVersion,
 }) {
   const { t } = useTranslation()
+  const { loading, data } = useQuery(MOVIE, { variables: { id: movie.id }, onError: (error) => console.log(error)}) //eslint-disable-line
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-
       <Box sx={{ position: 'relative' }}>
         <CardMedia
           component='img'
@@ -46,17 +49,18 @@ export default function MovieCard({
         />
         {isFullVersion && (
         <StyledImg>
-          <AddBoxOutlinedIcon sx={{ fontSize: 80, color: '' }} onClick={() => onCardSelect(movie)} />
+          <AddBoxOutlinedIcon sx={{ fontSize: 80, color: '' }} onClick={() => onCardSelect(data?.movieDetails)} />
         </StyledImg>
         )}
       </Box>
+      <Loading loading={loading} />
       <CardContent>
         {isFullVersion && (
         <CardHeader
           sx={{ position: 'absolute', right: 0, top: 0 }}
           action={(
             <CardMenu
-              onCardACtion={() => onCardSelect(movie)}
+              onCardACtion={() => onCardSelect(data?.movieDetails)}
             >
               {t('button')}
             </CardMenu>
@@ -67,11 +71,21 @@ export default function MovieCard({
           {movie.title}
         </Typography>
         <Typography mt={1} variant='subtitle2'>
-          <span style={{ color: '#00b7ff' }}>Release date: </span>
+          <span style={{ color: '#00b7ff' }}>{t('releaseDate')}</span>
           {' '}
-          {movie.releaseDate}
+          {movie.releaseDate.slice(6)}
         </Typography>
-        <MovieRating rating={movie.rating} />
+        <Typography variant='subtitle2'>
+          <span style={{ color: '#00b7ff' }}>{t('genres')}</span>
+          {' '}
+          {data && data?.movieDetails?.genres.map((movie) => movie?.name.toLowerCase()).join(', ')}
+        </Typography>
+        <Typography variant='subtitle2'>
+          <span style={{ color: '#00b7ff' }}>{t('country')}</span>
+          {' '}
+          {data && data?.movieDetails?.productionCountries.map((movie) => movie?.name).join(', ')}
+        </Typography>
+        <MovieRating rating={data?.movieDetails?.rating} />
       </CardContent>
     </Card>
   )

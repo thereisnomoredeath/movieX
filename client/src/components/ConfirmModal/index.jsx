@@ -13,6 +13,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import CheckIcon from '@mui/icons-material/Check'
 import { SocialIcon } from 'react-social-icons'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const style = {
   position: 'absolute',
@@ -39,6 +40,7 @@ const style = {
 export default function ConfirmModal({
   open, title, url, onClose,
 }) {
+  const { t } = useTranslation()
   const [ buttonColor, setButtonColor ] = React.useState(false)
   const reset = () => {
     setButtonColor(false)
@@ -88,7 +90,7 @@ export default function ConfirmModal({
         }}
         >
           <Typography sx={{ mt: '15px', color: '#AFCA75' }} variant='h5'>
-            Share width friends:
+            {t('share')}
           </Typography>
           <SocialIcon
             style={{ height: 25, width: 25, margin: '10px 0' }}

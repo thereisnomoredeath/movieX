@@ -15,7 +15,7 @@ i18n
       default: [ 'en' ],
     },
     whitelist: [ 'en', 'uk' ],
-    debug: true,
+    debug: false,
     detection: {
       order: [ 'localStorage', 'cookie' ],
       caches: [ 'localStorage', 'cookie' ],

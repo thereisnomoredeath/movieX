@@ -19,9 +19,8 @@ const ListOfMovies = styled(Paper)(({ theme }) => ({
 
 export default function Recommend() {
   const [ searchParams ] = useSearchParams()
-  const ids = searchParams.getAll('ids')[0].split(',').map((id) => +id)
-  const { loading, error, data } = useQuery(MOVIES, { variables: { id: ids } })
-  if (error) return <div>Something went wrong...</div>
+  const id = searchParams.getAll('ids')[0].split(',').map((id) => +id)
+  const { loading, data } = useQuery(MOVIES, { variables: { id }, onError: (error) => console.log(error)}) //eslint-disable-line
   return (
     <Box sx={{ flexGrow: 1, padding: '15px 0 15px 0', minHeight: 'calc(100vh - 48px)' }}>
       <ListOfMovies>
@@ -32,7 +31,7 @@ export default function Recommend() {
         </Box>
         )}
         <Grid container spacing={2}>
-          {data && data?.moviesById.map((movie) => (
+          {data && data?.movieDetailsArray.map((movie) => (
             <Grid key={movie.title} item xs={6} sm={4} md={3} lg={2}>
               <MovieCard movie={movie} isFullVersion={false} />
             </Grid>

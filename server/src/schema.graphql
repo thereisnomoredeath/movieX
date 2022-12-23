@@ -2,6 +2,7 @@ type Query {
   movies(page: Int): Movies
   moviesById(id: [Int]): [Movie]
   movieDetails(id: Int): MovieDetails
+  movieDetailsArray(id: [Int]): [MovieDetails]
 }
 
 type Movies {
@@ -12,7 +13,7 @@ type Movies {
 }
 
 type Movie {
-    id: ID!
+    id: Int
     title: String!
     releaseDate: String
     posterPath: String
@@ -41,7 +42,6 @@ type MovieDetails {
     posterPath: String
     productionCountries: [AllProductionCountries]
     releaseDate: String
-    revenue: Int
     runtime: Int
     status: String
     tagline: String
