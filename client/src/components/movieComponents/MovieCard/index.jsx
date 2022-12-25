@@ -10,9 +10,11 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import Box from '@mui/material/Box'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/client'
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip'
 import MovieRating from '../MovieRating'
 import CardMenu from '../CardMenu/index'
 import Loading from '../Loading'
+import CardModal from '../../CardModal'
 import MOVIE from './queries'
 
 const StyledImg = styled(Box)(({ theme }) => ({
@@ -37,6 +39,7 @@ export default function MovieCard({
   movie, onCardSelect, isFullVersion,
 }) {
   const { t } = useTranslation()
+  const [ modalState, setModalState ] = React.useState('')
   const { loading, data } = useQuery(MOVIE, { variables: { id: movie.id }, onError: (error) => console.log(error)}) //eslint-disable-line
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
@@ -46,6 +49,12 @@ export default function MovieCard({
           height='250'
           image={movie.image}
           alt='cover'
+        />
+        <PrivacyTipIcon
+          sx={{
+            fontSize: 40, position: 'absolute', bottom: 0, right: 0, cursor: 'pointer', zIndex: 88, padding: '10px', color: 'rgba(0, 183, 255, 0.7)',
+          }}
+          onClick={() => setModalState(!modalState)}
         />
         {isFullVersion && (
         <StyledImg>
@@ -87,6 +96,7 @@ export default function MovieCard({
         </Typography>
         <MovieRating rating={data?.movieDetails?.rating} />
       </CardContent>
+      <CardModal open={!!modalState} data={data?.movieDetails} closeModal={setModalState} loading={loading} />
     </Card>
   )
 }

@@ -3,6 +3,8 @@ import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 // import PropTypes from 'prop-types'
 import Paper from '@mui/material/Paper'
+import { Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import Loading from '../movieComponents/Loading'
 
 const style = {
@@ -20,7 +22,7 @@ const style = {
     top: '50%',
     left: '50%',
     width: '90%',
-    height: '40%',
+    height: '80%',
     boxShadow: 24,
     p: 4,
   },
@@ -28,14 +30,15 @@ const style = {
 }
 
 export default function ConfirmModal({
-  movie, open, closeModal, loading, data,
+  open, closeModal, loading, data,
 }) {
+  const { t } = useTranslation()
   return (
     <Loading loading={loading} />
     && (
     <Modal
       open={open}
-      onClose={() => closeModal(false)}
+      onClose={() => closeModal(!open)}
     >
       <Box sx={style}>
         <Paper
@@ -45,12 +48,18 @@ export default function ConfirmModal({
             p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%',
           }}
         >
-          {data && (
-          <div>
-            {data.id}
-          </div>
-          )}
-          {movie.id}
+          <Box p={2}>
+            <Typography variant='subtitle2'>
+              <span style={{ color: '#00b7ff' }}>{t('overview')}</span>
+              {' '}
+              {data && data.overview}
+            </Typography>
+            <Typography pt={1} variant='subtitle2'>
+              <span style={{ color: '#00b7ff' }}>{t('tagline')}</span>
+              {' '}
+              {data && data.tagline}
+            </Typography>
+          </Box>
         </Paper>
       </Box>
     </Modal>

@@ -12,5 +12,7 @@
     },
     "deleteButton": "Delete",
     "voteAverage": "Vote average: ",
-    "voteCount": "Vote count: "
+    "voteCount": "Vote count: ",
+    "overview": "Overview: ",
+    "tagline": "Tagline: "
 }

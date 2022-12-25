@@ -12,5 +12,7 @@
     },
     "deleteButton": "Видалити",
     "voteAverage": "Середня оцінка: ",
-    "voteCount": "Кількість голосів: "
+    "voteCount": "Кількість голосів: ",
+    "overview": "Опис: ",
+    "tagline": "Слоган: "
 }
