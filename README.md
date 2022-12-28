@@ -11,7 +11,7 @@ git clone https://github.com/thereisnomoredeath/movieX.git
 2. Then change directory to `cd ./movieX`:
 
 ```bash
-cd ./movieX
+cd ./movieX/client/src
 ```
 3. And now install all the dependencies and packages using follow command:
 
