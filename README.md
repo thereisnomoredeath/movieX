@@ -3,7 +3,7 @@
 ## Installation :rocket:
 Installing application via `npm or yarn`
 
-1. Clone the repository:
+1. Clone the repository YOUR_FOLDER(arbitrary directory):
 
 ```bash
 git clone https://github.com/thereisnomoredeath/movieX.git
@@ -46,7 +46,7 @@ node index.js
 Then open a new terminal. Change directory to `/client.src` and run the application:
 
 ```bash
-cd ./YOUR_DIR/movieX/client/src
+cd ./YOUR_FOLDER/movieX/client/src
 ```
 then:
 
