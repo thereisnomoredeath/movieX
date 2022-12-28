@@ -26,7 +26,7 @@ yarn
 4. Next need to start the server:
 
 ```bash
-cd ./server/src
+cd ../../server/src
 ```
 then:
 
