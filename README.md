@@ -6,7 +6,7 @@ Installing application via `npm or yarn`
 1. Clone the repository:
 
 ```bash
-https://github.com/thereisnomoredeath/movieX.git
+git clone https://github.com/thereisnomoredeath/movieX.git
 ```
 2. Then change directory to `cd ./MyApp`:
 
