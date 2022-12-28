@@ -1,8 +1,24 @@
 type Query {
-  movies(page: Int): Movies
+  movies(filter: MoviesFilterInput): Movies
   moviesById(id: [Int]): [Movie]
   movieDetails(id: Int): MovieDetails
   movieDetailsArray(id: [Int]): [MovieDetails]
+  genres: [Genre]
+}
+
+input MoviesFilterInput {
+    page: Int
+    sortBy: String
+    sortDirection: SORT_DIRECTION
+    includeAdult: Boolean
+    year: Int
+    primaryReleaseYear: Int
+    genre: Int
+}
+
+enum SORT_DIRECTION {
+    desc 
+    asc
 }
 
 type Movies {
@@ -32,7 +48,7 @@ type Movie {
 type MovieDetails {
     adult: Boolean
     budget: Int
-    genres: [Allgenres]
+    genres: [Genre]
     homepage: String
     id: Int
     originalLanguage: String
@@ -50,8 +66,8 @@ type MovieDetails {
     voteCount: Int
 }
 
-type Allgenres {
-    id: Int
+type Genre {
+    id: Int!
     name: String
 }
 

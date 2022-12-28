@@ -14,5 +14,28 @@
     "voteAverage": "Середня оцінка: ",
     "voteCount": "Кількість голосів: ",
     "overview": "Опис: ",
-    "tagline": "Слоган: "
+    "tagline": "Слоган: ",
+    "filters": {
+        "sortBy": "Сортувати по",
+        "sortDirection": "Напрямок",
+        "includeAdult": "Включно 18+",
+        "year": "Рік",
+        "releaseYear": "Рік випуску",
+        "genre": "Жанр",
+        "submit": "Пошук",
+        "reset": "Очистити",
+        "sort": {
+            "popularity": "Популярність",
+            "releaseDate": "Дата випуску",
+            "revenue": "Дохід",
+            "primaryReleaseDate": "Першочергова дата релізу",
+            "originalTitle": "Оригінальна назва",
+            "voteAverage": "Середня оцінка",
+            "voteCount": "Кількість оцінок"
+        },
+        "sortDirectionOptions": {
+            "asc": "ASC",
+            "desc": "DESC"
+        }
+    }
 }

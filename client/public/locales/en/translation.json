@@ -14,5 +14,28 @@
     "voteAverage": "Vote average: ",
     "voteCount": "Vote count: ",
     "overview": "Overview: ",
-    "tagline": "Tagline: "
+    "tagline": "Tagline: ",
+    "filters": {
+        "sortBy": "Sort by",
+        "sortDirection": "Sort direction",
+        "includeAdult": "Include adult",
+        "year": "Year",
+        "releaseYear": "Release year",
+        "genre": "Genre",
+        "submit": "Submit",
+        "reset": "Reset",
+        "sort": {
+            "popularity": "Popularity",
+            "releaseDate": "Release date",
+            "revenue": "Revenue",
+            "primaryReleaseDate": "Primary release date",
+            "originalTitle": "Original title",
+            "voteAverage": "Vote average",
+            "voteCount": "Vote count"
+        },
+        "sortDirectionOptions": {
+            "asc": "ASC",
+            "desc": "DESC"
+        }
+    }
 }

@@ -1,9 +1,11 @@
-const {getPopular, getMoviesById} = require('../modules/movies/index')
-const {Movie} = require('../modules/movies/entities/Movie')
-const {MovieDetails} = require('../modules/movies/entities/MovieDetails')
+const { discoverMovie, getMoviesById, getList } = require('../modules/movies/index')
+const { Movies } = require('../modules/movies/entities/Movies')
+const { Movie } = require('../modules/movies/entities/Movie')
+const { MovieDetails } = require('../modules/movies/entities/MovieDetails')
 
 async function movies(parent, args, context) {
-  return await getPopular(args.page, context)
+  const res = await discoverMovie(args, context)
+  return new Movies (res.data)
   }
 
     async function moviesById(parent, args, context) {
@@ -22,10 +24,16 @@ async function movies(parent, args, context) {
     return results.map(movie => new MovieDetails(movie))
   }
 
+  async function genres (_, _, context) {
+    const result = await getList(context)
+    return result.genres
+    }
+
   module.exports = {
     movies,
     moviesById,
     movieDetails,
-    movieDetailsArray
+    movieDetailsArray,
+    genres
   }
   

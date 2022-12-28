@@ -6,6 +6,7 @@ class MovieDetails {
         this.budget = movie.budget
         this.genres = movie.genres
         this.homepage = movie.homepage
+        this.releaseDate = movie.release_date
         this.id = movie.id
         this.originalLanguage = movie.original_language
         this.originalTitle = movie.original_title
@@ -23,23 +24,6 @@ class MovieDetails {
     productionCountries() {
       return this.RD.production_countries.map((el) => el.name === "United States of America" ? {...el, name: "USA"} : el)
     }
-
-    releaseDate () {
-        class MyDate {
-            constructor(data){
-              this.YYYY = data[0];
-              this.MM = data[1];
-              this.DD = data[2];
-            }
-          
-            DMY () {
-              return this.DD + '.' + this.MM + '.' + this.YYYY
-            }
-          
-          }
-                        
-          return new MyDate(this.RD.release_date.split('-')).DMY()
-        }
 }
 
 module.exports = {

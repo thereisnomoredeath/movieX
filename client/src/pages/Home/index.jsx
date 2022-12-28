@@ -9,7 +9,9 @@ import Stack from '@mui/material/Stack'
 
 import { MovieCard, SelectedMoviesSection } from '../../components'
 import useMovies from '../../hooks/useMovies/useMovies'
+import useFilters from '../../hooks/useFelters/useFilters'
 import Loading from '../../components/movieComponents/Loading'
+import Filters from '../../components/movieComponents/Filters'
 import MOVIES from './queries'
 
 const FiltersSection = styled(Paper)(({ theme }) => ({
@@ -25,12 +27,16 @@ const ListOfMovies = styled(Paper)(({ theme }) => ({
 }))
 
 export default function Home() {
-  const [ page, setPage ] = React.useState(1)
-  const { loading, data } = useQuery(MOVIES, { variables: { page }, onError: (error) => console.log(error)}) //eslint-disable-line
+  const { filter, setPage, setFilters } = useFilters()
+  const { loading, data } = useQuery(MOVIES, { variables: {filter}, onError: (error) => console.log(error)}) //eslint-disable-line
   const { selectCard, deleteCard, selectedMovies } = useMovies()
 
   const changePage = (e, page) => {
     setPage(page)
+  }
+
+  const onSubmit = (data) => {
+    setFilters(data)
   }
 
   return (
@@ -38,7 +44,10 @@ export default function Home() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <FiltersSection>
-            Filters section
+            <Filters
+              onSubmit={onSubmit}
+              initialValues={filter}
+            />
           </FiltersSection>
         </Grid>
         <Grid item xs={12} md={8} pb={2}>
@@ -55,7 +64,7 @@ export default function Home() {
               <Grid container spacing={2} pt={3} pb={2}>
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Stack sx={{ '& .MuiPagination-ul': { justifyContent: 'center' } }} spacing={2}>
-                    <Pagination onChange={changePage} page={page} count={500} variant='outlined' shape='rounded' />
+                    <Pagination onChange={changePage} page={filter.page} count={500} variant='outlined' shape='rounded' />
                   </Stack>
                 </Grid>
               </Grid>

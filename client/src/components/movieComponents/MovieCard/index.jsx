@@ -82,7 +82,7 @@ export default function MovieCard({
         <Typography mt={1} variant='subtitle2'>
           <span style={{ color: '#00b7ff' }}>{t('releaseDate')}</span>
           {' '}
-          {movie.releaseDate.slice(6)}
+          {movie.releaseDate.slice(0, 4)}
         </Typography>
         <Typography variant='subtitle2'>
           <span style={{ color: '#00b7ff' }}>{t('genres')}</span>
