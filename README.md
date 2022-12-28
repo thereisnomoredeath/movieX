@@ -23,7 +23,7 @@ or
 ```bash
 yarn
 ```
-4. Next need to start the server:
+4. Next need to change directory and install all the dependencies and packages for NodeJS server:
 
 ```bash
 cd ../../server/src
@@ -31,9 +31,19 @@ cd ../../server/src
 then:
 
 ```bash
-node index.js
+npm i
+```
+or
+
+```bash
+yarn
 ```
 5. At last starting the application. Open new terminal and run the following commands:
+
+```bash
+node index.js
+```
+then:
 
 ```bash
 cd ../../client/src
