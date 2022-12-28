@@ -8,10 +8,10 @@ Installing application via `npm or yarn`
 ```bash
 git clone https://github.com/thereisnomoredeath/movieX.git
 ```
-2. Then change directory to `cd ./MyApp`:
+2. Then change directory to `cd ./movieX`:
 
 ```bash
-cd ./MyApp
+cd ./movieX
 ```
 3. And now install all the dependencies and packages using follow command:
 
