@@ -1,11 +1,52 @@
 
 
 ## Installation :rocket:
-Install application via `npm or yarn`
+Installing application via `npm or yarn`
 
-```git clone [reference](https://github.com/thereisnomoredeath/Movies.git)```
+1. Clone the repository:
 
-Then change directory via `cd ./asdasd` and use follow
+```bash
+$ git clone https://github.com/thereisnomoredeath/Movies.git
+```
+2. Then change directory to `cd ./MyApp`:
 
+```bash
+$ cd ./MyApp
+```
+3. And now install all the dependencies and packages using follow command:
+
+```bash
+$ npm i
+```
+or
+
+```bash
+$ yarn
+```
+4. Next need to start the server:
+
+```bash
+$ cd ./server/src
+```
+then:
+
+```bash
+$ node index.js
+```
+5. At last starting the application. Open new terminal and run the following commands:
+
+```bash
+$ cd ../../client/src
+```
+then:
+
+```bash
+$ npm start
+```
+or
+
+```bash
+$ yarn start
+```
 ###### Mission complete :muscle:
-![complete](https://i.scdn.co/image/ab67616d0000b2739f1c6b769db9431775c0008b)
+![complete](https://i.imgflip.com/3wp5du.jpg)
