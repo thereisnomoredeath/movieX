@@ -3,7 +3,7 @@
 ## Installation :rocket:
 Installing application via `npm or yarn`
 
-1. Clone the repository YOUR_FOLDER(arbitrary directory):
+1. Clone the repository to *YOUR_FOLDER* (**arbitrary directory**):
 
 ```bash
 git clone https://github.com/thereisnomoredeath/movieX.git
