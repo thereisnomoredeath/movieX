@@ -15,17 +15,39 @@ function SortDirectionField() {
     <Field
       name='sortDirection'
       type='radio'
+      size='small'
       render={({ input }) => (
         <FormControl>
           <FormLabel id='sortDirection'>{t('filters.sortDirection')}</FormLabel>
           <RadioGroup
-            row
             name='sortDirection'
             {...input}
             defaultValue={SORT_DIRECTION.DESC}
           >
-            <FormControlLabel value={SORT_DIRECTION.ASC} control={<Radio />} label={t('filters.sortDirectionOptions.asc')} />
-            <FormControlLabel value={SORT_DIRECTION.DESC} control={<Radio />} label={t('filters.sortDirectionOptions.desc')} />
+            <FormControlLabel
+              value={SORT_DIRECTION.ASC}
+              control={(
+                <Radio sx={{
+                  '& .MuiSvgIcon-root': {
+                    fontSize: 17,
+                  },
+                }}
+                />
+)}
+              label={t('filters.sortDirectionOptions.asc')}
+            />
+            <FormControlLabel
+              value={SORT_DIRECTION.DESC}
+              control={(
+                <Radio sx={{
+                  '& .MuiSvgIcon-root': {
+                    fontSize: 17,
+                  },
+                }}
+                />
+)}
+              label={t('filters.sortDirectionOptions.desc')}
+            />
           </RadioGroup>
         </FormControl>
       )}

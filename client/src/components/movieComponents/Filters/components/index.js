@@ -5,6 +5,7 @@ import YearField from './YearField'
 import SubmitField from './SubmitButton'
 import ReleaseYearField from './ReleaseYearField'
 import GenreField from './GenreField'
+import ResetButton from './ResetButton'
 
 export {
   SortField,
@@ -14,4 +15,5 @@ export {
   SubmitField,
   ReleaseYearField,
   GenreField,
+  ResetButton,
 }

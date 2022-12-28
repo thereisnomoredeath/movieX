@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
@@ -16,6 +16,7 @@ const style = {
   boxShadow: 27,
   p: 4,
   borderRadius: '7px',
+  width: '90%',
 
   '@media (max-width: 430px) and (orientation: portrait)': {
     position: 'absolute',
@@ -65,4 +66,36 @@ export default function ConfirmModal({
     </Modal>
     )
   )
+}
+
+ConfirmModal.propTypes = {
+  open: PropTypes.bool,
+  closeModal: PropTypes.func,
+  loading: PropTypes.bool,
+  data: PropTypes.shape({
+    adult: PropTypes.bool,
+    budget: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })),
+    homepage: PropTypes.string,
+    id: PropTypes.number,
+    originalLanguage: PropTypes.string,
+    originalTitle: PropTypes.string,
+    overview: PropTypes.string,
+    popularity: PropTypes.number,
+    posterPath: PropTypes.string,
+    productionCountries: PropTypes.arrayOf(PropTypes.shape({
+      iso_3166_1: PropTypes.string,
+      name: PropTypes.string,
+    })),
+    releaseDate: PropTypes.string,
+    runtime: PropTypes.number,
+    status: PropTypes.string,
+    tagline: PropTypes.string,
+    title: PropTypes.string,
+    voteAverage: PropTypes.number,
+    voteCount: PropTypes.number,
+  }),
 }
