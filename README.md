@@ -38,15 +38,15 @@ or
 ```bash
 yarn
 ```
-5. At last starting the application. Open new terminal and run the following commands:
+5. At last starting the server:
 
 ```bash
 node index.js
 ```
-then:
+Then open a new terminal. Change directory to `/client.src` and run the application:
 
 ```bash
-cd ../../client/src
+cd ./YOUR_DIR/movieX/client/src
 ```
 then:
 
