@@ -1,5 +1,5 @@
 ## Preview App
-
+![Image alt](https://github.com/thereisnomoredeath/movieX/blob/main/1.png)
 
 
 ## Installation :rocket:
