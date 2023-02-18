@@ -1,6 +1,7 @@
 ## Preview App
 ![Image alt](https://github.com/thereisnomoredeath/movieX/blob/main/1.png)
 ![Image alt](https://github.com/thereisnomoredeath/movieX/blob/main/2.png)
+![Image alt](https://github.com/thereisnomoredeath/movieX/blob/main/qwerty.gif)
 
 ## Installation :rocket:
 Installing application via `npm or yarn`
